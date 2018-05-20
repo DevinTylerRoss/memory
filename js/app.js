@@ -1,6 +1,12 @@
 /*
  * Create a list that holds all of your cards
  */
+let cardList = ['fa-diamond','fa-paper-plane-o', 'fa-anchor', 'fa-bolt', 'fa-cube',
+ 'fa-anchor', 'fa-leaf', 'fa-bicycle', 'fa-diamond', 'fa-bomb', 'fa-leaf', 'fa-bomb', 'fa-bolt', 'fa-bicycle', 'fa-paper-plane-o', 'fa-cube' ];
+
+//variables
+const deck = document.querySelector(".deck");
+
 
 
 /*
@@ -26,9 +32,38 @@ function shuffle(array) {
 }
 
 
+console.log(cardList);
+
+const restartButton = document.querySelector('.restart');
+
+restartButton.addEventListener('click', function(){
+  deck.innerHTML = '';
+  shuffle(cardList);
+  console.log(cardList);
+
+  for(let i = 0; i < cardList.length; i++){
+
+    let el = document.createElement("li");
+    let innerEl = document.createElement("li");
+    innerEl.classList.add('fa', cardList[i]);
+    el.appendChild(innerEl);
+    el.classList.add('card');
+    deck.appendChild(el);
+    /*
+    start with the html
+
+    <li class="card"></li>
+    add inner html of '<li class="fa ' + cardList[i] + '">'
+    */
+    console.log(cardList[i]);
+  }
+});
+
+
+
 /*
  * set up the event listener for a card. If a card is clicked:
- *  - display the card's symbol (put this functionality in another function that you call from this one)
+ *  - display the card's symbol (put this functionality in another function that you call from this one) DONE
  *  - add the card to a *list* of "open" cards (put this functionality in another function that you call from this one)
  *  - if the list already has another card, check to see if the two cards match
  *    + if the cards do match, lock the cards in the open position (put this functionality in another function that you call from this one)
@@ -37,10 +72,31 @@ function shuffle(array) {
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
 
-const deck = document.querySelector(".deck");
 
+
+//turns over the card
+function addOpenShow(yep){
+  yep.classList.add('open', 'show');
+}
+
+function addToOpenList(){
+  //add clicked card to array of open cards
+
+}
+
+/*
 deck.addEventListener('click', function(event){
   //open and show class
   event.target.classList.add('open', 'show');
+  console.log("hey");
+})
+*/
+deck.addEventListener('click', function(event){
+
+  const el = event.target;
+  //open and show class to card
+  addOpenShow(el);
+
+  //test to see if function is working
   console.log("hey");
 })
