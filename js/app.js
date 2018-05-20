@@ -32,11 +32,11 @@ function shuffle(array) {
 }
 
 
-console.log(cardList);
+//console.log(cardList);
 
 const restartButton = document.querySelector('.restart');
 
-restartButton.addEventListener('click', function(){
+function createCards() {
   deck.innerHTML = '';
   shuffle(cardList);
   console.log(cardList);
@@ -57,7 +57,9 @@ restartButton.addEventListener('click', function(){
     */
     console.log(cardList[i]);
   }
-});
+}
+
+restartButton.addEventListener('click', createCards);
 
 
 
