@@ -22,8 +22,9 @@
         		<li><i class="fa fa-star"></i></li>
         	</ul>
 
-        	<span class="moves">3</span> Moves
-
+        	<span class="moves">0</span> Moves
+          <span class="minutes">00</span>:<span class="seconds">00</span> Timer
+          <button id="startButton">Start Playing</button>
             <div class="restart">
         		<i class="fa fa-repeat"></i>
         	</div>
@@ -83,6 +84,20 @@
           -->
 
         </ul>
+        <!-- Code for Modal   -->
+          <div id="myModal" class="modal">
+            <div class="modal-content">
+              <span class="giantX">&times;</span>
+                <p>You Won! Nice Job!</p>
+                <p>It only took you <span id="total-moves"></span> moves</p>
+                <p>and <span id="total-minutes"></span>minues, <span id="total-seconds"></span> seconds
+                <p>Your star rating is <span id="total-stars"></span></p>
+                <p>Play Again? <span id="yes-button">YES</span></p>
+            </div>
+          </div>
+
+          <button id="modalTest">Modal Test</button>
+
     </div>
 
     <script src="js/app.js"></script>
