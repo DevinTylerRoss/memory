@@ -65,7 +65,6 @@ function createCards() {
   console.log(cardList);
 
   moves.innerText = 0;
-  score = 0;
   for(let i = 0; i < cardList.length; i++){
 
     let el = document.createElement("li");
@@ -94,13 +93,12 @@ function noMatch(){
 
 //EVENTS
 deck.addEventListener('click', function(event){
-if(event.target.classList.contains('card') && !event.target.classList.contains('open') ){
+if(event.target.classList.contains('card')){
 
 
   //puts the event targget in a var
   const el = event.target;
   //puts the card clicked on in the open list array
-
   openCards.push(el);
   console.log(openCards);
   moves.innerText++;
