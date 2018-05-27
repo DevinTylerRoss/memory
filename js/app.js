@@ -1,3 +1,5 @@
+
+
 window.onload = function() {
     setupGame();
 
@@ -7,19 +9,20 @@ let cardList = ['fa-diamond', 'fa-paper-plane-o', 'fa-anchor', 'fa-bolt', 'fa-cu
     'fa-anchor', 'fa-leaf', 'fa-bicycle', 'fa-diamond', 'fa-bomb', 'fa-leaf', 'fa-bomb', 'fa-bolt', 'fa-bicycle', 'fa-paper-plane-o', 'fa-cube'
 ];
 
-//variables
+//Variables
+
 const deck = document.querySelector(".deck");
-
-
 const starsUl = document.querySelector('.stars');
 let openCards = [];
 let score = 0;
 let starRating = 3;
-let moves = document.querySelector('.moves');
+const moves = document.querySelector('.moves');
 let numberofMoves = 0;
 let ref_int;
 const restartButton = document.querySelector('.restart');
 let timerRunning = false;
+
+//Functions
 
 function resetScoreBoard() {
     moves.innerText = 0;
@@ -37,12 +40,6 @@ function ifWin() {
 
         }
     }
-    /*
-     * Display the cards on the page
-     *   - shuffle the list of cards using the provided "shuffle" method below
-     *   - loop through each card and create its HTML
-     *   - add each card's HTML to the page
-     */
 
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
@@ -83,6 +80,7 @@ function setupGame() {
     }
 }
 
+//checks to see if cards with flipped over cards match
 function noMatch() {
     console.log("running noMatch");
     console.log(openCards);
@@ -95,6 +93,72 @@ function noMatch() {
 
 }
 
+//removes stars from scoreboards if number of moves is too high
+function stars() {
+    if (numberofMoves === 25) {
+        //remove a star
+        starsUl.removeChild(starsUl.firstChild);
+
+        starRating = starRating - 1;
+        console.log(starRating);
+
+
+    } else if (numberofMoves === 35) {
+        //removes a star
+        starsUl.removeChild(starsUl.firstChild);
+        starRating = starRating - 1;
+        console.log(starRating);
+    }
+}
+
+function flipCard(){
+
+      if (event.target.classList.contains('card') && !event.target.classList.contains('open')) {
+
+
+          //puts the event targget in a variable
+          const el = event.target;
+          //puts the card clicked on in the open list array
+          openCards.push(el);
+          //logs array of open cards
+          console.log(openCards);
+          //increases both number of moves and the scoreboard display
+          moves.innerText++;
+          numberofMoves = numberofMoves + 1;
+
+          //checks if stars need to be decreased
+          stars();
+
+          //flips the card over!
+          el.classList.add('open', 'show');
+      }
+}
+
+function cardMatch(){
+  if (openCards.length > 1) {
+      if (openCards[0].firstElementChild.classList.item(1) === openCards[1].firstElementChild.classList.item(1)) {
+          console.log("a match!");
+          openCards[0].classList.add('match');
+          openCards[1].classList.add('match');
+
+
+          openCards = [];
+
+          score += 1;
+          console.log(score);
+          if (score > 7) {
+              ifWin();
+          }
+
+      } else {
+          setTimeout(noMatch, 1000);
+
+      }
+
+  }
+
+}
+
 
 //EVENTS
 deck.addEventListener('click', function(event) {
@@ -103,48 +167,9 @@ deck.addEventListener('click', function(event) {
     if (timerRunning === false) {
         startTimer();
     }
+    flipCard();
+    cardMatch();
 
-    if (event.target.classList.contains('card') && !event.target.classList.contains('open')) {
-
-
-        //puts the event targget in a var
-        const el = event.target;
-        //puts the card clicked on in the open list array
-
-        openCards.push(el);
-        console.log(openCards);
-        moves.innerText++;
-        numberofMoves = numberofMoves + 1;
-
-        //Star code
-        stars();
-
-        //flips the card over!
-        el.classList.add('open', 'show');
-    }
-
-
-    if (openCards.length > 1) {
-        if (openCards[0].firstElementChild.classList.item(1) === openCards[1].firstElementChild.classList.item(1)) {
-            console.log("a match!");
-            openCards[0].classList.add('match');
-            openCards[1].classList.add('match');
-
-
-            openCards = [];
-
-            score += 1;
-            console.log(score);
-            if (score > 7) {
-                ifWin();
-            }
-
-        } else {
-            setTimeout(noMatch, 1000);
-
-        }
-
-    }
 });
 
 
@@ -192,24 +217,6 @@ restartButton.addEventListener('click', function() {
     minDisplay.innerText = 00;
 });
 
-//star Code
-
-function stars() {
-    if (numberofMoves === 25) {
-        //remove a star
-        starsUl.removeChild(starsUl.firstChild);
-
-        starRating = starRating - 1;
-        console.log(starRating);
-
-
-    } else if (numberofMoves === 35) {
-        //removes a star
-        starsUl.removeChild(starsUl.firstChild);
-        starRating = starRating - 1;
-        console.log(starRating);
-    }
-}
 
 //MODAL Code
 
