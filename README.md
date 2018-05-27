@@ -2,19 +2,17 @@
 
 ## Table of Contents
 
-* [Instructions](#instructions)
+* [Description](#description)
 * [Contributing](#contributing)
 
-## Instructions
+## Description
 
-The starter project has some HTML and CSS styling to display a static version of the Memory Game project. You'll need to convert this project from a static project to an interactive one. This will require modifying the HTML and CSS files, but primarily the JavaScript file.
+This is the second porject in Udacity's Front-end Nanodegree program. The chalenge was to build an interaction memory game using the provided HTML and CSS files (and a little bit of started JavaScript code).
 
-To get started, open `js/app.js` and start building out the app's functionality
+The gameplay is simple. The user is presented with sixteen cards. Clicking on the cards causes them to 'flip' over, revealing a symbol. The goal is to find two cards with matching symbols. If the two cards chosen are not matches, they fill flip back order and return to their original state. If they do match, then they will stay revealed.
 
-For specific, detailed instructions, look at the project instructions in the [Udacity Classroom](https://classroom.udacity.com/me).
+The player is show their total moves, a timer and a star rating.
 
 ## Contributing
 
-This repository is the starter code for _all_ Udacity students. Therefore, we most likely will not accept pull requests.
-
-For details, check out [CONTRIBUTING.md](CONTRIBUTING.md).
+Open the app.js file to add new features or open the HTML.index or app.css file to create unique or original cards!

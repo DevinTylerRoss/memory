@@ -91,14 +91,14 @@ h1 {
     margin-bottom: 10px;
 }
 
-.score-panel .stars {
+.score-panel .stars, #stars {
     margin: 0;
     padding: 0;
     display: inline-block;
     margin: 0 5px 0 0;
 }
 
-.score-panel .stars li {
+.score-panel .stars li, #stars li {
     list-style: none;
     display: inline-block;
 }
@@ -154,6 +154,18 @@ MODAL STYLES
   color: white;
   text-decoration: none;
   cursor: pointer;
+}
+
+.modal-stars {
+  margin: 0;
+  padding: 0;
+  display: inline-block;
+  margin: 0 5px 0 0;
+}
+
+.modal-stars li {
+  list-style: none;
+  display: inline-block;
 }
 
 #yes-button {
